@@ -3,6 +3,7 @@ from django.utils import timezone
 
 from users.models import User
 
+
 class Product(models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.TextField(blank=True)
@@ -10,8 +11,8 @@ class Product(models.Model):
     amount = models.PositiveIntegerField(null=False)
     image_path = models.ImageField()
     created_at = models.DateTimeField(default=timezone.now)
-    reviews = models.ManyToManyField(User, through='Review')
-    
+    reviews = models.ManyToManyField(User, through="Review")
+
     def __str__(self):
         return self.name
 

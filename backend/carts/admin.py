@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Cart, CartItem
+
+class CartAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Cart, CartAdmin)
