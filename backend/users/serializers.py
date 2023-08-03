@@ -73,3 +73,10 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError(msg, code="authorization")
         attrs["user"] = user
         return attrs
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'favorites']

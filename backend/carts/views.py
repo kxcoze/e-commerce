@@ -1,22 +1,18 @@
 from rest_framework import views, status
-from rest_framework import authentication, permissions
 from rest_framework.response import Response
 
-from products.serializers import ProductSerializer
 from .serializers import CartSerializer, CartItemAddSerializer, CartItemDelSerializer
-from .decorators import check_cart_existing
 
 
 class CartView(views.APIView):
-    @check_cart_existing
+    # TODO: Add a Patch method for the view
     def get(self, request, format=None):
         if request.user.is_authenticated:
             serializer = CartSerializer(request.user.cart)
             return Response(serializer.data)
         # TODO: Handle anonymous user's cart
-        return Response("Sorry there is no cart")
+        return Response("Sorry there is no cart", status=status.HTTP_401_UNAUTHORIZED)
 
-    @check_cart_existing
     def put(self, request, format=None):
         if request.user.is_authenticated:
             serializer = CartItemAddSerializer(
@@ -29,9 +25,8 @@ class CartView(views.APIView):
                 serializer.error_messages, status=status.HTTP_400_BAD_REQUEST
             )
         # TODO: Handle anonymous user's cart
-        return Response("You have no rights here, sorry")
+        return Response("You have no rights here, sorry", status=status.HTTP_401_UNAUTHORIZED)
 
-    @check_cart_existing
     def delete(self, request, format=None):
         if request.user.is_authenticated:
             serializer = CartItemDelSerializer(
@@ -44,4 +39,4 @@ class CartView(views.APIView):
                 serializer.error_messages, status=status.HTTP_400_BAD_REQUEST
             )
         # TODO: Handle anonymous user's cart
-        return Response("You have no rights here, sorry")
+        return Response("You have no rights here, sorry", status=status.HTTP_401_UNAUTHORIZED)
