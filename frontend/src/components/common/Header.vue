@@ -1,32 +1,39 @@
 <template> 
   <n-layout-header bordered>
+    <n-button text @click="router.go(0)">
+      <icon type="refresh" size="20" :depth="2" />
+    </n-button>
     <n-breadcrumb>
-      <n-breadcrumb-item>Dashboard</n-breadcrumb-item>
-      <n-breadcrumb-item>Home</n-breadcrumb-item>
+      <n-breadcrumb-item>
+        <router-link :to="{ name: 'home' }">
+          E-commerce
+        </router-link> 
+      </n-breadcrumb-item>
+      <n-breadcrumb-item>
+        <router-link :to="{ name: 'products' }">
+          Products
+        </router-link>
+      </n-breadcrumb-item>
     </n-breadcrumb>
+
     <n-space :size="20" align="center" style="line-height: 1">
       <n-tooltip>
         <template #trigger>
-          <router-link :to="{ name: 'about' }">
+          <!-- <router-link :to="{ name: 'about' }">
             <icon type="help" size="22" :depth="2" />
-          </router-link>
+          </router-link> -->
+          <icon type="cart" size="22" :depth="2" />
         </template>
-        Dashboard help
+        Your cart
       </n-tooltip>
-      <n-tooltip>
-        <template #trigger>
-          <n-a href="https://github.com/zce/fearless" target="_blank">
-            <icon type="github" size="22" :depth="2" />
-          </n-a>
-        </template>
-        View on GitHub
-      </n-tooltip>
+
+
       <n-popover trigger="click" placement="bottom-end" :width="300">
         <template #trigger>
           <n-badge dot processing>
             <icon type="notifications" size="22" :depth="2" />
           </n-badge>
-        </template>>
+        </template>
         <n-tabs type="line" justify-content="space-evenly" style="--pane-padding: 0">
           <n-tab-pane name="notifications" tab="Notifications (5)">
             <n-list style="margin: 0">
@@ -40,7 +47,8 @@
           </n-tab-pane>
         </n-tabs>
       </n-popover>
-      <n-dropdown placement="bottom-end" show-arrow>
+      
+      <n-dropdown :options="options">
         <n-avatar size="small" round />
       </n-dropdown>
     </n-space>
@@ -48,8 +56,31 @@
 </template>
 
 <script setup>
-import Icon from './Icon.vue'
+import Icon from '../Icon.vue'
+import { h } from 'vue'
+import { useRouter, RouterLink } from 'vue-router'
 
+
+const router = useRouter()
+
+const renderIcon = (icon) => {
+  return () => {
+    return h(Icon, {type: icon})
+  }
+}
+
+const options = [
+  {
+    label: () => h(RouterLink, { to: 'profile' }, 'Profile'),
+    key: "profile",
+    icon: renderIcon('user')
+  }, 
+  {
+    label: () => h(RouterLink, { to: 'logout' }, 'Logout'),
+    key: "logout",
+    icon: renderIcon('logout')
+  }
+];
 </script>
 
 

@@ -21,10 +21,13 @@ import {
   HelpCircleOutline as help,
   NotificationsOutline as notifications,
   LogoGithub as github,
-  AlertCircleOutline as fallback
+  AlertCircleOutline as fallback,
+  PersonCircleOutline as user,
+  LogOutOutline as logout,
+  CartOutline as cart
 } from '@vicons/ionicons5'
 
-const icons = { refresh, dashboard, posts, pages, media, users, comments, themes, plugins, tools, settings, flask, add, help, notifications, github, fallback }
+const icons = { refresh, dashboard, posts, pages, media, users, comments, themes, plugins, tools, settings, flask, add, help, notifications, github, fallback, user, logout, cart}
 
 type IconTypes = keyof typeof icons
 

@@ -1,11 +1,9 @@
 <template>
-  <n-layout>  
-    <Header/>
-  </n-layout>
+  <provider>
+    <viewer />
+  </provider>
 </template>
 
-
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router'
-  import Header from './components/common/Header.vue'
-</script>
+import { Provider, Viewer } from './components'
+</script> 
