@@ -1,20 +1,19 @@
 <!-- Products -->
 
 <template>
-    <h1>Hello there!</h1>
-    <n-space>
-        <n-card v-for="product in productList" :title="product.name" size="large">
-            <n-space vertical>
-                <div>Цена: {{ product.price }}</div>
-                <div>Описание: {{ truncateDescription(product.description) }}</div>
-            </n-space>
-            <template #action>
-                <n-space justify="end">
-                    <n-button>Buy me!</n-button>
-                </n-space>
-            </template>
-        </n-card>
-    </n-space>
+  <n-space justify="center">
+      <n-card v-for="product in productList" :title="product.name" size="large">
+          <n-space vertical>
+              <div>Цена: {{ product.price }}</div>
+              <div>Описание: {{ truncateDescription(product.description) }}</div>
+          </n-space>
+          <template #action>
+              <n-space justify="end">
+                  <n-button>Buy me!</n-button>
+              </n-space>
+          </template>
+      </n-card>
+  </n-space>
 </template>
 
 

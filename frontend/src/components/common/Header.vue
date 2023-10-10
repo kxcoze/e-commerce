@@ -1,22 +1,18 @@
 <template> 
   <n-layout-header bordered>
     <n-button text @click="router.go(0)">
-      <icon type="refresh" size="20" :depth="2" />
-    </n-button>
-    <n-breadcrumb>
-      <n-breadcrumb-item>
-        <router-link :to="{ name: 'home' }">
-          E-commerce
-        </router-link> 
-      </n-breadcrumb-item>
-      <n-breadcrumb-item>
-        <router-link :to="{ name: 'products' }">
-          Products
-        </router-link>
-      </n-breadcrumb-item>
-    </n-breadcrumb>
+        <icon type="refresh" size="20" :depth="2" />
+      </n-button>
+    <n-space justify="space-between" :size="30">
+      <router-link :to="{ name: 'home' }">
+        E-commerce
+      </router-link>
+      <router-link :to="{ name: 'products' }">
+        Products
+      </router-link>
+    </n-space>
 
-    <n-space :size="20" align="center" style="line-height: 1">
+    <n-space :size="20" align="center" style="line-height: 1; margin-left:auto">
       <n-tooltip>
         <template #trigger>
           <!-- <router-link :to="{ name: 'about' }">
@@ -26,8 +22,6 @@
         </template>
         Your cart
       </n-tooltip>
-
-
       <n-popover trigger="click" placement="bottom-end" :width="300">
         <template #trigger>
           <n-badge dot processing>
@@ -96,7 +90,9 @@ const options = [
 .n-button {
   margin-right: 15px;
 }
-.n-space {
-  margin-left: auto;
+
+.n-space a {
+  text-decoration: none;
+  color: inherit;
 }
 </style>

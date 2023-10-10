@@ -2,14 +2,12 @@ import { HTTP } from './common.js'
 
 
 export const Product = {
-    list() {
-        return HTTP.get('/products/').then(response => {
-            return response.data
-        })
+    async list() {
+        const response = await HTTP.get('/products/')
+        return response.data
     },
-    get(product) {
-        return HTTP.get(`/product/${product.id}`).then(response => {
-            return response.data
-        })
+    async get(product) {
+        const response = await HTTP.get(`/product/${product.id}`)
+        return response.data
     }
 }
