@@ -19,7 +19,7 @@ _TODO:_
         1. [X] User 
         2. [X] Group
         3. [X] Product
-		4. [X] Order
+	4. [X] Order
         5. [X] Cart
         6. ...
 	4. [ ] Recommendations Service
@@ -29,13 +29,13 @@ _TODO:_
         4. [ ] 
 2. [ ] Frontend
     1. [ ] Create Components
-        1. [ ] Navbar (Header)
+        1. [X] Navbar (Header)
         2. [ ] Footer
-        3. [ ] Icon
+        3. [X] Icon
         4. [ ] Cart
         5. ...
     2. [ ] Create Consumers (Views)
-        1. [ ] Index Page
+        1. [X] Index Page
         2. [ ] Login Page
         2. [ ] User Page
         3. [ ] Products Page
